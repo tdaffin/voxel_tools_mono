@@ -1,3 +1,32 @@
-[gd_scene format=2]
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://VoxelTerrain.cs" type="Script" id=1]
+
+[sub_resource type="Voxel" id=1]
+voxel_name = "air"
+transparent = true
+
+[sub_resource type="Voxel" id=2]
+voxel_name = "solid"
+geometry_type = 1
+collision_aabbs = [ AABB( 0, 0, 0, 1, 1, 1 ) ]
+cube_geometry/padding_y = null
+cube_tiles/left = Vector2( 0, 0 )
+cube_tiles/right = Vector2( 0, 0 )
+cube_tiles/bottom = Vector2( 0, 0 )
+cube_tiles/top = Vector2( 0, 0 )
+cube_tiles/back = Vector2( 0, 0 )
+cube_tiles/front = Vector2( 0, 0 )
+
+[sub_resource type="VoxelLibrary" id=3]
+voxels/0 = SubResource( 1 )
+voxels/1 = SubResource( 2 )
 
 [node name="Spatial" type="Spatial"]
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( -0.663985, -0.61434, 0.426276, -0.149985, 0.667918, 0.728965, -0.732549, 0.420087, -0.535629, 20, 50, -20 )
+
+[node name="VoxelTerrain" type="VoxelTerrain" parent="."]
+voxel_library = SubResource( 3 )
+script = ExtResource( 1 )
